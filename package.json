@@ -4,6 +4,7 @@
   },
   "scripts": {
     "build": "echo \"Build complete\"",
-    "postinstall": "echo \"Dependencies installed\""
+    "postinstall": "echo \"Dependencies installed\"",
+    "start": "node server.js"
   }
 }
