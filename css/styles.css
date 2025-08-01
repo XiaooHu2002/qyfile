@@ -1,0 +1,139 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('../img/bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.home-icon {
+    font-size: 1.2em;
+    margin-right: 10px; /* 增加图标与文字的间距 */
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#file-list {
+    text-align: left;
+}
+
+/* 文件列表样式 */
+.file-item {
+    display: flex; /* 调整为 flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: flex-start; /* 水平居左 */
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+    text-decoration: none; /* 移除下划线 */
+    color: inherit;
+}
+
+.file-item:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.02); /* 鼠标悬停放大效果 */
+}
+
+.file-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* 移除下划线 */
+    color: inherit;
+}
+
+.file-item .folder-icon,
+.file-item .file-icon {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.file-item span {
+    flex-grow: 1; /* 确保内容水平居左 */
+    text-align: left;
+}
+
+.folder-icon {
+    margin-right: 10px;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.file-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+#refresh-button {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+#refresh-button:hover {
+    background-color: #0056b3;
+}
+
+.header a {
+    text-decoration: none; /* 移除下划线 */
+    color: #007bff;
+    margin: 0 5px; /* 增加间距 */
+}
+
+.header a:hover {
+    text-decoration: none; /* 移除 hover 下划线 */
+}
+
+footer a {
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.2); /* 毛玻璃效果背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    border-radius: 5px; /* 圆角 */
+    text-decoration: none; /* 移除下划线 */
+    color: #007bff; /* 链接颜色 */
+    font-weight: bold;
+    transition: all 0.3s ease; /* 添加动画效果 */
+}
+
+footer a:hover {
+    background: rgba(255, 255, 255, 0.4); /* 鼠标悬停时背景变亮 */
+    color: #0056b3; /* 鼠标悬停时文字颜色变深 */
+    transform: scale(1.1); /* 鼠标悬停时放大效果 */
+    text-decoration: none; /* 保持无下划线 */
+}
