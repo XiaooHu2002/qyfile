@@ -1,0 +1,295 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('../img/bg.png') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: #333;
+}
+
+.container {
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 90%;
+    max-width: 800px;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+
+.home-icon {
+    font-size: 1.2em;
+    margin-right: 10px; /* 增加图标与文字的间距 */
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+#file-list {
+    text-align: left;
+}
+
+/* 文件列表样式 */
+.file-item {
+    display: flex; /* 调整为 flex 布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: flex-start; /* 水平居左 */
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.3s;
+    text-decoration: none; /* 移除下划线 */
+    color: inherit;
+}
+
+.file-item:hover {
+    background: rgba(255, 255, 255, 0.7);
+    transform: scale(1.02); /* 鼠标悬停放大效果 */
+}
+
+.file-item a {
+    display: flex;
+    align-items: center;
+    text-decoration: none; /* 移除下划线 */
+    color: inherit;
+}
+
+.file-item .folder-icon,
+.file-item .file-icon {
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.file-item span {
+    flex-grow: 1; /* 确保内容水平居左 */
+    text-align: left;
+}
+
+.folder-icon {
+    margin-right: 10px;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+.file-icon {
+    margin-right: 10px;
+    font-size: 1.2em;
+    vertical-align: middle;
+}
+
+#refresh-button {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+#refresh-button:hover {
+    background-color: #0056b3;
+}
+
+#toggle-view {
+    margin-left: auto; /* 将按钮移动到最右边 */
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+#toggle-view:hover {
+    background-color: #0056b3;
+}
+
+.header a {
+    text-decoration: none; /* 移除下划线 */
+    color: #007bff;
+    margin: 0 5px; /* 增加间距 */
+}
+
+.header a:hover {
+    text-decoration: none; /* 移除 hover 下划线 */
+}
+
+footer a {
+    display: inline-block;
+    padding: 5px 15px;
+    background: rgba(255, 255, 255, 0.2); /* 毛玻璃效果背景 */
+    backdrop-filter: blur(10px); /* 毛玻璃效果 */
+    border-radius: 5px; /* 圆角 */
+    text-decoration: none; /* 移除下划线 */
+    color: #007bff; /* 链接颜色 */
+    font-weight: bold;
+    transition: all 0.3s ease; /* 添加动画效果 */
+}
+
+footer a:hover {
+    background: rgba(255, 255, 255, 0.4); /* 鼠标悬停时背景变亮 */
+    color: #0056b3; /* 鼠标悬停时文字颜色变深 */
+    transform: scale(1.1); /* 鼠标悬停时放大效果 */
+    text-decoration: none; /* 保持无下划线 */
+}
+
+/* 网格视图样式 */
+.file-list.grid-view {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 15px; /* 增加网格间距 */
+}
+
+.file-list.grid-view .file-item {
+    flex-direction: column; /* 调整为垂直布局 */
+    align-items: center; /* 居中对齐 */
+    justify-content: center; /* 居中对齐 */
+    text-align: center; /* 文本居中 */
+    width: 150px; /* 固定宽度 */
+    height: 150px; /* 固定高度，确保正方形 */
+    border-radius: 10px; /* 圆角设计 */
+    background: rgba(255, 255, 255, 0.5); /* 保持毛玻璃效果 */
+    overflow: hidden; /* 防止内容溢出 */
+}
+
+.file-list.grid-view .file-item a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    height: 100%;
+}
+
+.file-list.grid-view .file-item span {
+    text-align: center; /* 文本居中 */
+    margin-top: 8px; /* 图标与文字间距 */
+    white-space: nowrap; /* 防止换行 */
+    overflow: hidden; /* 隐藏溢出内容 */
+    text-overflow: ellipsis; /* 显示省略号 */
+    max-width: 130px; /* 限制最大宽度 */
+    font-size: 12px; /* 调整字体大小 */
+    line-height: 1.2;
+}
+
+.file-list.grid-view .file-item .folder-icon,
+.file-list.grid-view .file-item .file-icon {
+    font-size: 3.5em;
+    margin-right: 0; /* 移除右边距 */
+    margin-bottom: 0; /* 移除下边距 */
+}
+
+/* 列表视图样式 */
+.file-list.list-view {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-list.list-view .file-item {
+    flex-direction: row; /* 调整为水平布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: flex-start; /* 水平居左 */
+    text-align: left; /* 文本居左 */
+    gap: 10px; /* 增加图标与文字间距 */
+}
+
+.file-list.list-view .file-item span {
+    text-align: left; /* 文本居左 */
+}
+
+.file-list.list-view .file-item .folder-icon,
+.file-list.list-view .file-item .file-icon {
+    font-size: 1.8em; /* 列表视图图标稍微放大 */
+}
+
+.video-container {
+    display: flex;
+    flex-direction: column; /* 垂直布局 */
+    justify-content: center;
+    align-items: center;
+    width: 90%; /* 限制宽度为页面的 90% */
+    max-width: 753px;
+    margin: 0 auto; /* 居中 */
+    padding: 20px; /* 增加内边距 */
+    background: rgba(255, 255, 255, 0.9); /* 白色框背景 */
+    border-radius: 10px; /* 圆角设计 */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+    margin-bottom: 20px;
+    height: 500px;
+}
+
+.video-wrapper {
+    width: 100%; /* 视频播放器宽度适应容器 */
+    max-width: 900px; /* 最大宽度为 900px */
+    margin-bottom: 10px; /* 与下载按钮保持间距 */
+}
+
+.video-js {
+    border-radius: 10px; /* 圆角设计 */
+    width: 100%;
+    height: 100%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+}
+
+.download-button {
+    display: block; /* 转换为块级元素 */
+    margin: 10px auto; /* 上下间距为 10px，水平居中 */
+    padding: 10px 20px; /* 长方形设计 */
+    background-color: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1em;
+    text-align: center; /* 文本居中 */
+    white-space: nowrap; /* 防止换行 */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.download-button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+/* 自定义播放器样式 */
+.plyr__controls {
+    background-color: #333;
+    color: #fff;
+}
+
+.plyr__controls button {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+}
+
+.plyr__controls button:hover {
+    color: #ddd;
+}
+
+/* 视频播放器容器样式 */
+.plyr--video {
+    overflow: hidden;
+    width: 100%;
+}

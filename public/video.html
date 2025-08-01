@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>视频播放器</title>
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.7.8/plyr.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="navigation">
+                <span class="home-icon">🏠</span>
+                <a href="index.html">返回首页</a>
+            </div>
+        </div>
+        <div id="video-container" class="video-container">
+            <video id="player" playsinline controls>
+
+            </video>
+            <!-- 新增下载按钮 -->
+            <div id="download-container">
+                <a id="download-btn" class="download-button" href="#" download>下载视频</a>
+            </div>
+        </div>
+        <footer>千屹文件列表 | <a href="https://qianyios.top">严千屹</a></footer>
+    </div>
+    <script src="https://cdn.plyr.io/3.7.8/plyr.polyfilled.js"></script>
+    <script>
+        const player = new Plyr('#player', {
+            i18n: {
+                restart: '重新开始',
+                rewind: '快退 {seektime}s',
+                play: '播放',
+                pause: '暂停',
+                fastForward: '快进 {seektime}s',
+                seek: '查找',
+                seekLabel: '{currentTime} of {duration}',
+                played: '已播放',
+                buffered: '已缓冲',
+                currentTime: '当前时间',
+                duration: '总时长',
+                volume: '音量',
+                mute: '静音',
+                unmute: '取消静音',
+                enableCaptions: '开启字幕',
+                disableCaptions: '关闭字幕',
+                download: '下载',
+                enterFullscreen: '进入全屏',
+                exitFullscreen: '退出全屏',
+                frameTitle: '嵌入的 {title} 播放器',
+                captions: '字幕',
+                settings: '设置',
+                pip: '画中画',
+                menuBack: '返回 {title}',
+                speed: '速度',
+                normal: '正常',
+                quality: '质量',
+                loop: '循环'
+            }
+        });
+    </script>    
+    <script>        
+        // 修改为使用参数 "path" 并解码
+        const urlParams = new URLSearchParams(window.location.search);
+        const filePath = urlParams.get('path');
+    
+        if (filePath) {
+            const videoSource = `/files/${decodeURIComponent(filePath)}`; // 使用动态路径
+            const videoElement = document.getElementById('player');
+            videoElement.src = videoSource;
+            
+            player.source = {
+                type: 'video',
+                sources: [
+                    { src: videoSource, type: 'video/mp4' }
+                ]
+            };
+    
+            // 设置下载按钮链接
+            const downloadBtn = document.getElementById('download-btn');
+            if (downloadBtn) {
+                downloadBtn.href = videoSource;
+            }
+        } else {
+            alert('未指定视频文件路径，请从文件列表中选择视频播放！');
+        }
+    </script>
+</body>
+</html>
