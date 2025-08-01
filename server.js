@@ -2,8 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 80;
 // 静态文件服务
 app.use(express.static('public')); // 确保 public 目录优先
 app.use('/files', express.static(path.join(__dirname, 'public/files'), {
